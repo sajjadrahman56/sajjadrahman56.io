@@ -31,6 +31,27 @@
             align-items: stretch;
             height: 100%;
         }
+
+        .custom-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 9%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: .3s;
+        }
+
+        .custom-nav.sticky {
+            padding: 5px 100px;
+            background: rgb(158, 200, 243);
+
+        }
+
+        
     </style>
 
 
@@ -38,30 +59,37 @@
 </head>
 
 <body>
-    <nav class="m-2 p-3 navbar navbar-expand-lg navbar-light bg-light col-lg-12 custom-navbar"
-        style="font-family: 'Poppins', sans-serif;">
 
 
-        <div class="container-fluid ">
-            <a class="navbar-brand" href="#">
-                <img src="" alt="sajjad" class="img-fluid">
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto m-1">
-                    <li><a class="p-2 text-decoration-none active text-dark" href="#home">Home</a></li>
-                    <li><a class="p-2 text-decoration-none  text-dark" href="#about">About</a></li>
-                    <li><a class="p-2 text-decoration-none  text-dark" href="#education">Education</a></li>
-                    <li><a class="p-2 text-decoration-none text-dark" href="#projects">Projects</a></li>
-                    <li><a class="p-2 text-decoration-none text-dark" href="#contact">Contacts</a></li>
-                </ul>
+        <nav class="m-2 p-3 navbar navbar-expand-lg navbar-light col-lg-12 custom-navbar"
+            style="font-family: 'Poppins', sans-serif;">
+
+
+            <div class="container-fluid custom-nav">
+                <a class="navbar-brand" href="#">
+                    <a href="#" class="text-decoration-none text-dark">Sajjad</a>
+                </a>
+
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto m-1">
+                        <li><a class="p-2 text-decoration-none active text-dark" href="#home">Home</a></li>
+                        <li><a class="p-2 text-decoration-none  text-dark" href="#about">About</a></li>
+                        <li><a class="p-2 text-decoration-none  text-dark" href="#education">Education</a></li>
+                        <li><a class="p-2 text-decoration-none text-dark" href="#projects">Projects</a></li>
+                        <li><a class="p-2 text-decoration-none text-dark" href="#contact">Contacts</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-    </nav>
+        </nav>
+
+
 
     <!-- seNav bar end -->
 
@@ -113,7 +141,7 @@
                 <div class="col-md-6">
                     <div class="about-text">
                         <h3 class="fs-4 mb-3"> </h3>
-                        <p class="text-muted text-sm-justify text-md-start text-lg-justify justify-text">
+                        <p class="text-muted text-sm-justify text-md-start text-lg-justify justify-text custom-p">
                             <code>Greetings!</code>
                             I am an enthusiastic individual with a wide range of skills and a strong affinity for
                             technology.
@@ -134,7 +162,7 @@
                         </p>
 
 
-                        <div class="row text-center text-uppercase">
+                        <div class="row text-center text-uppercase custom-project">
                             <div class="col-sm-6 col-md-6 col-6">
                                 <div class="fact-item">
                                     <h4 class="fs-1 fw-bold">3</h4>
@@ -205,7 +233,7 @@
             <h2 class="text-center mb-4">Latest Education</h2>
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 versity">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Bachelor's Degree in Computer Science</h5>
@@ -214,7 +242,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 school">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">SSC</h5>
@@ -241,7 +269,7 @@
             </div>
 
             <div class="row mt2">
-                <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-6 project-one">
                     <div class="image-container d-block" style="width: 200px; height: 220px;">
                         <img src="resources/hm.png" alt="portfolio-item" class="w-100 h-100 img-thumbnail">
                         <h3 class="text-uppercase mt-1">Save Sylhet</h3>
@@ -250,7 +278,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-6 project-two">
                     <div class="image-container d-block" style="width: 200px; height: 220px;">
                         <img src="resources/wp.jpeg" alt="portfolio-item" class="w-100 h-100 img-thumbnail">
                         <h3 class="text-uppercase mt-1">Whether app </h3>
@@ -359,7 +387,18 @@
 
     <!-- footer start -->
 
+    <!-- =======Sticky Navbar====== -->
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector(".custom-nav");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
 
+    <!-- =======Animation======= -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="main.js"></script>
 
 
 </body>
